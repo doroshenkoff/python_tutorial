@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rotate image</title>
+</head>
+<body>
+    <div>
+        <form action="/" method=post enctype=multipart/form-data>
+          <input type=file name=file>
+          <input type=submit value=Upload>
+        </form>
+    </div>
+    <div>
+        {% if msg %}
+        <h2 style="color: red">{{ msg }}</h2>
+        {% endif %}
+    </div>
+        {% if file %}
+        <img src="{{ url_for('static', filename=file) }}" width="800">
+    <div>
+        <form action="/rotate/{{ file }}" method=post enctype=multipart/form-data>
+          <input type=submit name=right value="Right">
+          <input type=submit name=left value="Left">
+          <input type=submit name=upend value="Upend">
+        </form>
+    </div>
+    <div>
+        <form action="/download/{{ file }}" method="get">
+           <input type=submit value="Download">
+        </form>
+    </div>
+    <div>
+
+        {% endif %}
+    </div>
+</body>
+</html>
