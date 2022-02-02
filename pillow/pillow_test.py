@@ -1,10 +1,10 @@
 from PIL import Image
 from flask import Flask, render_template, request, send_file
 from werkzeug.utils import secure_filename
+from pillow_ext import EXTENSIONS
 
 
 UPLOAD_FOLDER = 'static'
-ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'tiff', 'jfif']
 
 
 app = Flask(__name__)
@@ -24,7 +24,7 @@ def rotate_img(filename, flag):
 
 def check_ext(f_name):
     ext = f_name.split('.')[-1]
-    return '.' in f_name and ext in ALLOWED_EXTENSIONS
+    return '.' in f_name and ext in EXTENSIONS
 
 
 @app.route('/', methods=['GET', 'POST'])
