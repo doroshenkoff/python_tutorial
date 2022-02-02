@@ -24,7 +24,7 @@ def rotate_img(filename, flag):
 
 def check_ext(f_name):
     ext = f_name.split('.')[-1]
-    return '.' in f_name and ext in EXTENSIONS
+    return '.' in f_name and ext in EXTENSIONS.keys()
 
 
 @app.route('/', methods=['GET', 'POST'])
